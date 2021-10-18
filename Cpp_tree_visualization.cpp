@@ -454,22 +454,57 @@ int	main ()
 {
 	node	*tree = NULL;
 	string	str_test;
-	int		rand_elem = 0;
+	int		rand_elem = 0, mod_tree = -1, temp_num = -1;
 
 	srand(time(NULL));
+
+	cout << "Введите 1, что бы смотреть как в дерево добавляются рандомные элементы" << endl;
+	cout << "Введите 2, что бы самому добавлять элементы в дерево" << endl;
+	cout << "Введите 3, что бы смотреть как в дерево добавляются рандомные элементы (под элементом печатается глубина дерева)" << endl;
+	cout << "Введите 4, что бы самому добавлять элементы в дерево (под элементом печатается глубина дерева)" << endl;
+	cout << "(В случае 3 и 4 используется более медленный алгоритм (во много раз медленне!!!) (может отображать только числа от 0 до 999))" << endl;
+	if (!getline(cin, str_test))
+		return (1);
+	if (str_test == "1" || str_test == "2" || str_test == "3" || str_test == "4")
+		mod_tree = stoi(str_test);
+	else
+	{
+		cout << "Неверный ввод" << endl;
+		return (1);
+	}
 
 	for (size_t i = 0; i < 1000 ; i++)
 	{
 		clear();
-		print_tree(tree);
 		cout << "=======================" << endl;
-		print_tree_2(tree);
-		rand_elem = rand() % 1000;
-		push(rand_elem, &tree);
-		cout << "Enter для добавления случайного элемента (-1 для выхода)" << endl;
-		getline(cin, str_test);
-		if (str_test == "-1")
-			break ;
+		if (mod_tree == 3 || mod_tree == 4)
+			print_tree(tree, 1);
+		else
+			print_tree_2(tree);
+		if (mod_tree == 1 || mod_tree == 3)
+		{
+			rand_elem = rand() % 1000;
+			push(rand_elem, &tree);
+			cout << "Enter для добавления случайного элемента (введите exit для выхода)" << endl;
+			if (!getline(cin, str_test))
+				return (1);
+			if (str_test == "exit")
+				break ;
+		}
+		else
+		{
+			cout << "Введите значение элемента (от 0 до 999) (введите exit для выхода)" << endl;
+			if (!getline(cin, str_test))
+				return (1);
+			if (str_test == "exit" || str_test == "")
+				break ;
+			temp_num = atoi(str_test.c_str());
+			if (temp_num < 0 || temp_num > 999)
+				return (1);
+			else
+				push(atoi(str_test.c_str()), &tree);
+		}
+		cout << "=======================" << endl;
 	}
 
 	return (0);
