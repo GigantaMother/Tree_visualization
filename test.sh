@@ -1,0 +1,1 @@
+clang++ Cpp_tree_visualization.cpp -o tree && ./tree
