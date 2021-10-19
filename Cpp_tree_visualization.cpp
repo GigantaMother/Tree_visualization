@@ -12,10 +12,10 @@ using namespace std;
 // Структура для дерева
 struct node
 {
-	int				info;	// ключ
+	int		info;	// ключ
 	unsigned char	height;	// высота(глубина) дерева
-	int				layer;	// слой, на котором находится элемент
-	node			*l, *r;	// левая, правая ветка
+	int		layer;	// слой, на котором находится элемент
+	node		*l, *r;	// левая, правая ветка
 };
 
 //=============================================================================================================================================================
@@ -391,7 +391,7 @@ int	main ()
 {
 	node	*tree = NULL;
 	string	str_test;
-	int		rand_elem = 0, mod_tree = -1, temp_num = -1;
+	int	rand_elem = 0, mod_tree = -1, temp_num = -1;
 
 	srand(time(NULL));
 
