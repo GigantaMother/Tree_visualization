@@ -28,12 +28,6 @@ unsigned char height(node* p)
 	return (p ? p->height : 0);
 }
 
-// Определяет нужно ли крутить дерево
-int bfactor(node* p)
-{
-	return (height(p->r) - height(p->l));
-}
-
 // Востанавливает корректность высоты, при условии, что у веток верная высота
 unsigned char fixheight(node* p)
 {
@@ -41,34 +35,6 @@ unsigned char fixheight(node* p)
 	unsigned char hr = height(p->r);
 
 	return ((hl > hr ? hl : hr) + 1);
-}
-
-// правый поворот вокруг p
-node* rotateright(node** p)
-{
-	node* q = (*p)->l;
-
-	(*p)->l = q->r;
-	q->r = (*p);
-
-	(*p)->height = fixheight((*p));
-	q->height = fixheight(q);
-
-	return (q);
-}
-
-// левый поворот вокруг q
-node* rotateleft(node** q)
-{
-	node* p = (*q)->r;
-
-	(*q)->r = p->l;
-	p->l = *q;
-
-	(*q)->height = fixheight(*q);
-	p->height = fixheight(p);
-
-	return (p);
 }
 
 // Считает кол-во элементов в дереве
@@ -113,7 +79,6 @@ std::string print_num(int num, char ch)
 			temp += ch;
 		temp += to_string(num);
 	}
-
 	return (temp);
 }
 
@@ -125,7 +90,7 @@ void push(int a, node **t)
 		(*t) = new node;				// Выделяем память
 		(*t)->info = a;					// Кладем в выделенное место аргумент a
 		(*t)->l = (*t)->r = NULL;		// Очищаем память для следующего роста
-		(*t)->height = 0;
+		(*t)->height = 1;
 		(*t)->layer = 0;
 
 		return;
@@ -141,36 +106,8 @@ void push(int a, node **t)
 		(*t)->l->layer = ((*t)->layer) + 1;
 	}
 	(*t)->height = fixheight(*t);		// Корректируем глубину
-
-	//-------------------------------------------------------------------
-	/*
-	int balance = bfactor(*t);			// Блок для балансировки
-	if (bfactor(*t) == 2)
-	{
-		if (bfactor((*t)->r) < 0)
-			(*t)->r = rotateright(&(*t)->r);
-		*t = rotateleft(t);
-	}
-	if(bfactor(*t) == -2)
-	{
-		if( bfactor((*t)->l) > 0 )
-			(*t)->l = rotateleft(&(*t)->l);
-		*t = rotateright(t);
-	}
-	*/
-	//-------------------------------------------------------------------
 }
 
-// Печатает элементы дерева последовательно
-void PrintTree(node *root)
-{
-
-	if (!root)
-		return ;
-	PrintTree(root->l);
-	std::cout << root->info << ", " << std::flush;
-	PrintTree(root->r);
-}
 //=============================================================================================================================================================
 //================ РЕЖИМ ПЕЧАТИ ДЕРЕВА С БУФЕРОМ (ДЕРЕВО НЕМНОГО МЕНЬШЕ ПО ШИРИНЕ, НО ПЕЧАТАЕТСЯ ДОЛГО, ЕСТЬ РЕЖИМЫ ПЕЧАТИ ДОП ДАННЫХ)=========================
 //=============================================================================================================================================================
