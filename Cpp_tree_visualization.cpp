@@ -120,7 +120,7 @@ void fill_depth(node *tree, std::string *lev_tree, std::string *lev_tree_height,
 	if (tree == NULL)
 		return ;
 
-	int		d = depth(tree), skip_pred = pow(2, d - 1) - 2, arm = pow(2, d - 1);
+	int	d = depth(tree), skip_pred = pow(2, d - 1) - 2, arm = pow(2, d - 1);
 	string	num_str = print_num(tree->info, '0'), height_str;
 
 	if (mod == -1)
@@ -362,7 +362,7 @@ void print_tree_2(node *tree)
 
 	int		indent_prev = 0;
 	int		len_num_prev = 0;
-	bool	indent_prev_bool = false;
+	bool		indent_prev_bool = false;
 	int		right_arm_prev = 0;
 
 	cout << "Tree no buf\n" << "d= " << d << endl << "s= " << size(tree) << endl;
