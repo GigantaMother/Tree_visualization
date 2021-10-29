@@ -1,7 +1,8 @@
 # Tree_visualization
 Draws a tree in a beautiful way
 
-Authors: https://github.com/GigantaMother, https://github.com/IrenaMora
+Authors: [Aleksandr](https://github.com/GigantaMother), [
+Ivan](https://github.com/IrenaMora)
 
 Start: bash test.sh         
 
