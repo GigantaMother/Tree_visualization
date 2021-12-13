@@ -15,5 +15,4 @@ Start: bash test.sh
 В случае 3 и 4 используется более медленный алгоритм (во много раз медленнее и может отображать только числа от 0 до 999). <br/>
 
 <img width="1053" alt="tree_1" src="https://user-images.githubusercontent.com/70471514/137760420-ee22f212-512a-4598-922c-4962822fbbd9.png">
-
 <img width="974" alt="tree_2" src="https://user-images.githubusercontent.com/70471514/137760430-99ad8862-1ce5-4460-a648-2125ddf144cf.png">
