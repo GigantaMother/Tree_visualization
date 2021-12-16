@@ -1,8 +1,6 @@
 # Tree_visualization
 Draws a tree in a beautiful way
 
-Authors: [Aleksandr](https://github.com/alexcander560)
-
 Start: bash test.sh         
 
 Используйте данную программу, что бы видеть, как добавляются элементы в бинарное дерево.
